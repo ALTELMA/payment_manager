@@ -1,7 +1,7 @@
 {{ Form::open(array('url' => 'login')) }}
-{{ Form::label('username', 'Username : ') }}
-{{ Form::text('username' ) }}
+{{ Form::label('E-mail', 'E-mail : ') }}
+{{ Form::text('email' ) }}
 {{ Form::label('password', 'Password : ') }}
-{{ Form::password('passowrd') }}
+{{ Form::password('password') }}
 {{ Form::submit('Login') }}
 {{ Form::close() }}

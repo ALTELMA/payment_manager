@@ -18,20 +18,16 @@ App::missing(function($exception)
 });
 
 // login
-Route::get('login', function(){
-    return View::make('login');
-});
-
-Route::post('login', function(){
-    return Redirect::intended();
-});
+Route::get('login', array('uses' => 'UserController@showLogin'));
+Route::post('login', array('uses' => 'UserController@doLogin'));
+Route::get('logout', array('uses' => 'UserController@doLogout'));
 
 // User
 Route::group(array('prefix' => 'user', 'before' => 'auth'), function()
 {
 	// main
 	Route::get('/', function(){
-		return "USER :D";
+		return '<a href="/logout">Logout</a>';;
 	});
 
 	// add
