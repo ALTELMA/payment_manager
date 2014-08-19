@@ -26,9 +26,7 @@ Route::get('logout', array('uses' => 'UserController@doLogout'));
 Route::group(array('prefix' => 'user', 'before' => 'auth'), function()
 {
 	// main
-	Route::get('/', function(){
-		return '<a href="/logout">Logout</a>';;
-	});
+	Route::get('/', array('uses' => 'UserController@index'));
 
 	// add
     Route::get('add', function()
