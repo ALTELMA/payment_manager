@@ -17,6 +17,11 @@ App::missing(function($exception)
     return Response::view('error/404', array(), 404);
 });
 
+Route::get('/', function()
+    {
+        return View::make("login");
+    });
+
 // login
 Route::get('login', array('uses' => 'UserController@showLogin'));
 Route::post('login', array('uses' => 'UserController@doLogin'));
@@ -53,3 +58,6 @@ Route::group(array('prefix' => 'user', 'before' => 'auth'), function()
     });
 
 });
+
+// Income
+Route::resource('income', 'IncomeController');
