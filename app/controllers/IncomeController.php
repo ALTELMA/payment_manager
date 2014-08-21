@@ -25,7 +25,8 @@ class IncomeController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		// load the create form (app/views/nerds/create.blade.php)
+		return View::make('income.create');
 	}
 
 
@@ -36,7 +37,30 @@ class IncomeController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$rules = array(
+			'name'     => 'required',
+			'category' => 'required|numeric',
+			'value'    => 'required|numeric'
+		);
+		$validator = Validator::make(Input::all(), $rules);
+
+		// process the login
+		if ($validator->fails()) {
+			return Redirect::to('income/create')
+				->withErrors($validator)
+				->withInput(Input::except('password'));
+		} else {
+			// store
+			$income              = new Income;
+			$income->name        = Input::get('name');
+			$income->category_id = Input::get('category');
+			$income->value       = Input::get('value');
+			$income->save();
+
+			// redirect
+			Session::flash('message', 'Successfully add Income!');
+			return Redirect::to('income');
+		}
 	}
 
 
@@ -48,7 +72,12 @@ class IncomeController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		// get the nerd
+		$income = Income::find($id);
+
+		// show the view and pass the nerd to it
+		return View::make('income.show')
+			->with('income', $income);
 	}
 
 
@@ -60,7 +89,12 @@ class IncomeController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		// get the nerd
+		$income = Income::find($id);
+
+		// show the edit form and pass the nerd
+		return View::make('income.edit')
+			->with('income', $income);
 	}
 
 
@@ -72,7 +106,30 @@ class IncomeController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$rules = array(
+			'name'     => 'required',
+			'category' => 'required|numeric',
+			'value'    => 'required|numeric'
+		);
+		$validator = Validator::make(Input::all(), $rules);
+
+		// process the login
+		if ($validator->fails()) {
+			return Redirect::to('income/' . $id . '/edit')
+				->withErrors($validator)
+				->withInput(Input::except('password'));
+		} else {
+			// store
+			$income = Income::find($id);
+			$income->name        = Input::get('name');
+			$income->category_id = Input::get('category');
+			$income->value       = Input::get('value');
+			$income->save();
+
+			// redirect
+			Session::flash('message', 'Successfully Edit Income!');
+			return Redirect::to('income');
+		}
 	}
 
 
@@ -84,7 +141,13 @@ class IncomeController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		// delete
+		$income = Income::find($id);
+		$income->delete();
+
+		// redirect
+		Session::flash('message', 'Successfully deleted the income!');
+		return Redirect::to('income');
 	}
 
 
