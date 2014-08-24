@@ -108,7 +108,7 @@ class IncomeController extends \BaseController {
 	{
 		$rules = array(
 			'name'     => 'required',
-			'category' => 'required|numeric',
+			'category_id' => 'required|numeric',
 			'value'    => 'required|numeric'
 		);
 		$validator = Validator::make(Input::all(), $rules);
@@ -122,7 +122,7 @@ class IncomeController extends \BaseController {
 			// store
 			$income = Income::find($id);
 			$income->name        = Input::get('name');
-			$income->category_id = Input::get('category');
+			$income->category_id = Input::get('category_id');
 			$income->value       = Input::get('value');
 			$income->save();
 
