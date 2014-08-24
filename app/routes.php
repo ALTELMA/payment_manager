@@ -18,9 +18,9 @@ App::missing(function($exception)
 });
 
 Route::get('/', function()
-    {
-        return View::make("login");
-    });
+{
+    return View::make("login");
+});
 
 // login
 Route::get('login', array('uses' => 'UserController@showLogin'));

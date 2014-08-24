@@ -1,4 +1,4 @@
-@extends('layout/template')
+@extends('layouts/template')
 
 @section('content')
 {{ Form::open(array('url' => 'login')) }}
