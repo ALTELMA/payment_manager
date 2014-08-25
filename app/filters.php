@@ -88,13 +88,3 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
-
-
-// Test Filter
-Route::filter('old', function()
-{
-    if (Input::get('age') < 200)
-    {
-        return Redirect::to('user');
-    }
-});

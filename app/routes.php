@@ -11,7 +11,5 @@
 |
 */
 
-Route::get('/', function()
-{
-    return View::make("home");
-});
+Route::get('/', array('uses' => 'UserController@showLogin'));
+Route::get('user/login', array('uses' => 'UserController@showLogin'));
