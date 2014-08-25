@@ -12,4 +12,4 @@
 */
 
 Route::get('/', array('uses' => 'UserController@showLogin'));
-Route::get('user/login', array('uses' => 'UserController@showLogin'));
+Route::post('user/login', array('uses' => 'UserController@showLogin'));

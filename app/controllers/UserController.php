@@ -99,7 +99,7 @@ class UserController extends \BaseController {
 	 */
 	public function doLogin()
 	{
-		return View::make('users.login');
+		
 	}
 
 }
