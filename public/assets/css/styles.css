@@ -6693,3 +6693,7 @@ button.close {
     display: none !important;
   }
 }
+#login-box {
+  width: 400px;
+  margin: 0 auto;
+}
