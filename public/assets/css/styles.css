@@ -308,8 +308,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?1408985557);
-  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?&1408985557#iefix) format("embedded-opentype"), url(/fonts/bootstrap/glyphicons-halflings-regular.woff?1408985558) format("woff"), url(/fonts/bootstrap/glyphicons-halflings-regular.ttf?1408985558) format("truetype"), url(/fonts/bootstrap/glyphicons-halflings-regular.svg?1408985558#glyphicons_halflingsregular) format("svg");
+  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?1409018268);
+  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?&1409018268#iefix) format("embedded-opentype"), url(/fonts/bootstrap/glyphicons-halflings-regular.woff?1409018268) format("woff"), url(/fonts/bootstrap/glyphicons-halflings-regular.ttf?1409018268) format("truetype"), url(/fonts/bootstrap/glyphicons-halflings-regular.svg?1409018268#glyphicons_halflingsregular) format("svg");
 }
 .glyphicon {
   position: relative;
@@ -6692,12 +6692,4 @@ button.close {
   .hidden-print {
     display: none !important;
   }
-}
-/* Layouts
-=================================================================== */
-/* Login
-=================================================================== */
-#login-box {
-  width: 400px;
-  margin: 0 auto;
 }
