@@ -308,8 +308,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?1409018268);
-  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?&1409018268#iefix) format("embedded-opentype"), url(/fonts/bootstrap/glyphicons-halflings-regular.woff?1409018268) format("woff"), url(/fonts/bootstrap/glyphicons-halflings-regular.ttf?1409018268) format("truetype"), url(/fonts/bootstrap/glyphicons-halflings-regular.svg?1409018268#glyphicons_halflingsregular) format("svg");
+  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?1409039717);
+  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?&1409039717#iefix) format("embedded-opentype"), url(/fonts/bootstrap/glyphicons-halflings-regular.woff?1409039717) format("woff"), url(/fonts/bootstrap/glyphicons-halflings-regular.ttf?1409039717) format("truetype"), url(/fonts/bootstrap/glyphicons-halflings-regular.svg?1409039717#glyphicons_halflingsregular) format("svg");
 }
 .glyphicon {
   position: relative;
@@ -6692,8 +6692,4 @@ button.close {
   .hidden-print {
     display: none !important;
   }
-}
-#login-box {
-  width: 400px;
-  margin: 0 auto;
 }
