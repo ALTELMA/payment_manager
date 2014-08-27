@@ -11,5 +11,20 @@
 |
 */
 
-Route::get('/', array('uses' => 'UserController@showLogin'));
-Route::post('user/login', array('uses' => 'UserController@showLogin'));
+// Login
+Route::get('/', function(){
+	return View::make('users.login');
+});
+
+Route::post('user/login', array('uses' => 'UserController@doLogin'));
+
+//=====================================================================
+// USERS
+//=====================================================================
+
+// Register
+Route::get('user/register', function(){
+	return View::make('users.register');
+});
+
+Route::post('user/register', array('uses' => 'UserController@register'));

@@ -1,19 +1,22 @@
 @extends('layouts.default')
 @section('content')
-	<div class="container">
-		<div id="login-box">
-			{{Form::open(array('role' => 'form', 'url' => 'user/login'))}}
-			<h1>Login</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			{{Form::open(array('class' => 'form form-login','role' => 'form', 'url' => 'user/login'))}}
+			<h2 class="text-center"><i class="fa fa-credit-card"></i>&nbsp;Payment Manager</h2>
 			<hr>
-			<div class="form-group">
-				{{Form::label('username','Username', array('class' => 'control-label'))}}
-				{{Form::text('username', Input::old('username'), array('class' => 'form-control', 'placeholder' => 'username'))}}
+			{{Form::text('username', Input::old('username'), array('class' => 'form-control', 'placeholder' => 'Username or Email'))}}
+			{{Form::password('password', array('class' => 'form-control', 'placeholder' => 'password'))}}
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" name="remember" value="remember-me"> Remember me
+				</label>
+				<a href="#">[ Forgot ]</a> <a href="user/register">[ Register ]</a>
 			</div>
-			<div class="form-group">
-				{{Form::label('username','Username', array('class' => 'control-label'))}}
-				{{Form::password('password', array('class' => 'form-control', 'placeholder' => 'password'))}}
-			</div>
+			<button class="btn btn-primary btn-block">Login</button>
 			{{Form::close()}}
 		</div>
 	</div>
+</div>
 @stop

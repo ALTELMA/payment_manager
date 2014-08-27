@@ -93,7 +93,7 @@ class UserController extends \BaseController {
 	}
 
 	/**
-	 * Login process.
+	 * Login process from input.
 	 *
 	 * @return Response
 	 */
