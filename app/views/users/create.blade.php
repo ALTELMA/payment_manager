@@ -2,9 +2,10 @@
 @section('content')
 	<div class="container">
 		<h2>Register</h2>
-		{{Form::open(array('class' => 'form form-register','role' => 'form', 'url' => 'user/register'))}}
+		<hr>
+		{{Form::open(array('class' => 'form form-register','role' => 'form', 'url' => 'user'))}}
 		<div class="form-grorp">
-			{{Form::label('Username')}}
+			{{Form::label('Username',array())}}
 			{{Form::text('username')}}
 		</div>
 		<div class="form-grorp">

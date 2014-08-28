@@ -12,7 +12,7 @@
 				<label>
 					<input type="checkbox" name="remember" value="remember-me"> Remember me
 				</label>
-				<a href="#">[ Forgot ]</a> <a href="user/register">[ Register ]</a>
+				<a href="#">[ Forgot ]</a> <a href="{{ URL::to('user/create') }}">[ Register ]</a>
 			</div>
 			<button class="btn btn-primary btn-block">Login</button>
 			{{Form::close()}}

@@ -20,7 +20,8 @@ class UserController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		// load the create form (app/views/users/create.blade.php)
+		return View::make('users.create');
 	}
 
 
