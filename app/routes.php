@@ -22,4 +22,6 @@ Route::post('user/login', array('uses' => 'UserController@doLogin'));
 // USERS
 //=====================================================================
 
+Route::get('user/register', array('uses' => 'UserController@create'));
+
 Route::resource('user', 'UserController');

@@ -55,12 +55,12 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'jobchance',
+			'database'  => 'payment_manager',
 			'username'  => 'root',
 			'password'  => 'mysql',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
-			'prefix'    => 'oc_',
+			'prefix'    => '',
 		),
 
 		'pgsql' => array(

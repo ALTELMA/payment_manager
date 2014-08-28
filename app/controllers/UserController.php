@@ -32,7 +32,33 @@ class UserController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// validate
+		$rules = array(
+			'username' => 'required',
+			'password' => 'required|min:8',
+			'email'    => 'required|email|unique:users',
+		);
+
+		$validator = Validator::make(Input::all(), $rules);
+
+		if($validator->fails()){
+
+			return Redirect::to('user/register')
+				->withErrors($validator)
+				->withInput(Input::except('password'));
+		}else{
+
+			$user = new user;
+			$user->username = Input::get('username');
+			$user->password = Hash::make(Input::get('password'));
+			$user->email    = Input::get('email');
+			$user->save();
+
+			// redirect
+			Session::flash('message', 'Successfully register!');
+			return Redirect::to('user');
+		}
+		
 	}
 
 
