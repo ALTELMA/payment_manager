@@ -25,3 +25,30 @@ Route::post('user/login', array('uses' => 'UserController@doLogin'));
 Route::get('user/register', array('uses' => 'UserController@create'));
 
 Route::resource('user', 'UserController');
+
+//=====================================================================
+// INCOME
+//=====================================================================
+
+Route::resource('income', 'IncomeController');
+
+//=====================================================================
+// Expense
+//=====================================================================
+
+Route::resource('expense', 'ExpenseController');
+
+//=====================================================================
+// Setting
+//=====================================================================
+
+Route::resource('setting', 'ExpenseController');
+
+//=====================================================================
+// Error
+//=====================================================================
+
+App::missing(function($exception)
+{
+	return Response::view('error.404', array(), 404);
+});

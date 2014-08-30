@@ -1,11 +1,10 @@
 @extends('layouts.default')
 @section('content')
 	<div class="container">
-		<h2><i class="fa fa-user"></i>&nbsp;Register</h2>
-		<hr>
+		<h2><i class="fa fa-user"></i>&nbsp;Register <a class="pull-right btn btn-primary" href="{{ URL::to('/');}}"><i class="fa fa-arrow-circle-left"></i>&nbsp;Back</a></h2>
 		@if ($errors->has())
 			<div class="alert alert-danger">
-				{{ HTML::ul($errors->all()) }}
+				{{ HTML::ul($errors->all()); }}
 			</div>
 		@endif
 		{{ Form::open(array('class' => 'form form-register','role' => 'form', 'url' => 'user')) }}

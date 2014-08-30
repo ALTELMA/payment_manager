@@ -308,8 +308,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?1408985557);
-  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?&1408985557#iefix) format("embedded-opentype"), url(/fonts/bootstrap/glyphicons-halflings-regular.woff?1408985558) format("woff"), url(/fonts/bootstrap/glyphicons-halflings-regular.ttf?1408985558) format("truetype"), url(/fonts/bootstrap/glyphicons-halflings-regular.svg?1408985558#glyphicons_halflingsregular) format("svg");
+  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?1409215187);
+  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?&1409215187#iefix) format("embedded-opentype"), url(/fonts/bootstrap/glyphicons-halflings-regular.woff?1409215187) format("woff"), url(/fonts/bootstrap/glyphicons-halflings-regular.ttf?1409215187) format("truetype"), url(/fonts/bootstrap/glyphicons-halflings-regular.svg?1409215187#glyphicons_halflingsregular) format("svg");
 }
 .glyphicon {
   position: relative;
@@ -6693,6 +6693,21 @@ button.close {
     display: none !important;
   }
 }
+body {
+  padding-top: 70px;
+}
+
+footer {
+  max-width: 100%;
+  height: 150px;
+  background: #232323;
+}
+
+#copyright {
+  margin-top: 2em;
+  color: #FFF;
+}
+
 .form-login {
   max-width: 330px;
   margin: 10em auto 0 auto;

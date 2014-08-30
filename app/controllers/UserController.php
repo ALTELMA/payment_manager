@@ -9,7 +9,12 @@ class UserController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		// load the create form (app/views/users/create.blade.php)
+		if(Auth::check()){
+			return View::make('users.index');
+		}else{
+			Redirect::to('/');
+		}
 	}
 
 
@@ -35,17 +40,17 @@ class UserController extends \BaseController {
 		// validate
 		$rules = array(
 			'username' => 'required',
-			'password' => 'required|min:8',
+			'password' => 'required|min:6',
 			'email'    => 'required|email|unique:users',
-		);
+			);
 
 		$validator = Validator::make(Input::all(), $rules);
 
 		if($validator->fails()){
 
 			return Redirect::to('user/register')
-				->withErrors($validator)
-				->withInput(Input::except('password'));
+			->withErrors($validator)
+			->withInput(Input::except('password'));
 		}else{
 
 			$user = new user;
@@ -116,6 +121,11 @@ class UserController extends \BaseController {
 	 */
 	public function showLogin()
 	{
+
+		if(Auth::check()){
+			return Redirect::to('user');
+		}
+
 		return View::make('users.login');
 	}
 
@@ -126,7 +136,28 @@ class UserController extends \BaseController {
 	 */
 	public function doLogin()
 	{
-		
+
+		$rules = array(
+			'username' => 'required',
+			'password' => 'required|min:3'
+			);
+
+		$validator = Validator::make(Input::all(), $rules);
+
+		if($validator->fails()){
+			return Redirect::to('/')->withErrors($validator)->withInput(Input::Expect('password'));
+		}else{
+			$userdata = array(
+				'username' 	=> Input::get('username'),
+				'password' 	=> Input::get('password')
+				);
+
+			if(Auth::attempt($userdata)){
+				return Redirect::to('/user'); // redirect to index
+			}else{
+				return Redirect::to('/'); // redirect to login
+			}
+		}
 	}
 
 }
