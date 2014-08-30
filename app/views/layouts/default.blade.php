@@ -8,16 +8,8 @@
 	<?php echo HTML::Style('assets/css/font-awesome.min.css');?>
 </head>
 <body>
-	<header>
-		
-	</header>
-
 	<div id="content">
 		@yield('content')
 	</div>
-
-	<footer>
-		
-	</footer>
 </body>
 </html>

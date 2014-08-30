@@ -9,8 +9,12 @@ class IncomeController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
-		
+		//Get all income
+		$incomes = Income::all();
+
+		// Load data send pass view
+		return View::make('income.index')
+			->with('incomes',$incomes);
 	}
 
 
@@ -21,7 +25,8 @@ class IncomeController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		// Show
+		return View::make('income.form');
 	}
 
 

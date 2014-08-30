@@ -30,10 +30,10 @@
 
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="{{ URL::to('user') }}">Dashboard</a></li>
-						<li><a href="{{ URL::to('income') }}">Income</a></li>
-						<li><a href="{{ URL::to('expense') }}">Expense</a></li>
-						<li><a href="{{ URL::to('setting') }}">Setting</a></li>
+						<li {{ (Request::is('user') ? 'class=active' : '') }} ><a href="{{ URL::to('user') }}">Dashboard</a></li>
+						<li {{ (Request::is('income') ? 'class=active' : '') }} ><a href="{{ URL::to('income') }}">Income</a></li>
+						<li {{ (Request::is('expense') ? 'class=active' : '') }} ><a href="{{ URL::to('expense') }}">Expense</a></li>
+						<li {{ (Request::is('setting') ? 'class=active' : '') }} <a href="{{ URL::to('setting') }}">Setting</a></li>
 					</ul>
 				</div>
 			</div><!-- end container -->
