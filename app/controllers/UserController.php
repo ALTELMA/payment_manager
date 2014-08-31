@@ -145,7 +145,9 @@ class UserController extends \BaseController {
 		$validator = Validator::make(Input::all(), $rules);
 
 		if($validator->fails()){
-			return Redirect::to('/')->withErrors($validator)->withInput(Input::Expect('password'));
+			return Redirect::to('/')
+				->withErrors($validator)
+				->withInput(Input::except('password'));
 		}else{
 			$userdata = array(
 				'username' 	=> Input::get('username'),

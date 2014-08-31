@@ -12,9 +12,13 @@ class IncomeController extends \BaseController {
 		//Get all income
 		$incomes = Income::all();
 
+		// Get Total Value
+		$totalValue = Income::sum('value');
+
 		// Load data send pass view
 		return View::make('income.index')
-			->with('incomes',$incomes);
+			->with('incomes', $incomes)
+			->with('totalValue', $totalValue);
 	}
 
 
@@ -25,7 +29,7 @@ class IncomeController extends \BaseController {
 	 */
 	public function create()
 	{
-		// Show
+		//
 		return View::make('income.form');
 	}
 
@@ -38,6 +42,29 @@ class IncomeController extends \BaseController {
 	public function store()
 	{
 		//
+		$rules = array(
+			'title'       => 'required',
+			'description' => 'required',
+			'value'       => 'required|numeric'
+		);
+
+		$validator = Validator::make(Input::all(), $rules);
+
+		if($validator->fails()){
+			return Redirect::to('income/create')
+				->withErrors($validator);
+		}else{
+			
+			$income = new Income;
+			$income->title       = Input::get('title');
+			$income->description = Input::get('description');
+			$income->value       = Input::get('value');
+			$income->save();
+
+			// redirect
+			Session::flash('message', 'Success! Income Add');
+			return Redirect::to('income');
+		}
 	}
 
 
