@@ -10,6 +10,7 @@ class ExpenseController extends \BaseController {
 	public function index()
 	{
 		//
+		echo "EXPENSE INDEX";
 	}
 
 

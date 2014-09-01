@@ -16,7 +16,8 @@ Route::get('/', function(){
 	return View::make('users.login');
 });
 
-Route::post('user/login', array('uses' => 'UserController@doLogin'));
+Route::post('user/login', array('uses' => 'UserController@doLogin')); // Logoin
+Route::get('user/logout', array('uses' => 'UserController@doLogout')); // Logout
 
 //=====================================================================
 // USERS
@@ -24,25 +25,34 @@ Route::post('user/login', array('uses' => 'UserController@doLogin'));
 
 Route::get('user/register', array('uses' => 'UserController@create'));
 
-Route::resource('user', 'UserController');
+Route::group(array('before'=>'auth'), function() {   
+	Route::resource('user', 'UserController');
+});
 
 //=====================================================================
 // INCOME
 //=====================================================================
-
-Route::resource('income', 'IncomeController');
+//
+Route::group(array('before'=>'auth'), function() {   
+	Route::resource('income', 'IncomeController');
+});
 
 //=====================================================================
 // Expense
 //=====================================================================
 
-Route::resource('expense', 'ExpenseController');
+//Route::resource('expense', 'ExpenseController');
+
+Route::group(array('before'=>'auth'), function() {   
+    Route::resource('expense', 'ExpenseController');
+});
 
 //=====================================================================
 // Setting
 //=====================================================================
-
-Route::resource('setting', 'ExpenseController');
+Route::group(array('before'=>'auth'), function() {   
+	Route::resource('setting', 'ExpenseController');
+});
 
 //=====================================================================
 // Error

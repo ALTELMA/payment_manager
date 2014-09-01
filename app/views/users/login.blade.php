@@ -6,6 +6,11 @@
 			{{Form::open(array('class' => 'form form-login','role' => 'form', 'url' => 'user/login'))}}
 			<h2 class="text-center"><i class="fa fa-credit-card"></i>&nbsp;Payment Manager</h2>
 			<hr>
+			@if($errors->has())
+			<div class="alert alert-danger">
+				{{ HTML::ul($errors->all()); }}
+			</div>
+			@endif
 			{{Form::text('username', Input::old('username'), array('class' => 'form-control', 'placeholder' => 'Username or Email'))}}
 			{{Form::password('password', array('class' => 'form-control', 'placeholder' => 'password'))}}
 			<div class="checkbox">

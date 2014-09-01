@@ -10,11 +10,7 @@ class UserController extends \BaseController {
 	public function index()
 	{
 		// load the create form (app/views/users/create.blade.php)
-		if(Auth::check()){
-			return View::make('users.index');
-		}else{
-			Redirect::to('/');
-		}
+		return View::make('users.index');
 	}
 
 
@@ -160,6 +156,17 @@ class UserController extends \BaseController {
 				return Redirect::to('/'); // redirect to login
 			}
 		}
+	}
+
+	/**
+	 * Logout
+	 *
+	 * @return Response
+	 */
+	public function doLogout()
+	{
+		Auth::Logout();
+		return Redirect::to('/');
 	}
 
 }
