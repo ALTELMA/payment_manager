@@ -88,7 +88,11 @@ class IncomeController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		// Get the income
+		$income = Income::find($id);
+
+		return View::make('income.form')->with('income',$income);
+
 	}
 
 
@@ -101,6 +105,29 @@ class IncomeController extends \BaseController {
 	public function update($id)
 	{
 		//
+		$rules = array(
+			'title'       => 'required',
+			'description' => 'required',
+			'value'       => 'required|numeric'
+		);
+
+		$validator = Validator::make(Input::all(), $rules);
+
+		if($validator->fails()){
+			return Redirect::to('income/create')
+				->withErrors($validator);
+		}else{
+			
+			$income = Income::find($id);
+			$income->title       = Input::get('title');
+			$income->description = Input::get('description');
+			$income->value       = Input::get('value');
+			$income->save();
+
+			// redirect
+			Session::flash('message', 'Success! Income Add');
+			return Redirect::to('income');
+		}
 	}
 
 
@@ -112,7 +139,11 @@ class IncomeController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		// Delete Data
+		$income = Income::find($id);
+		if($income) $income->delete();
+
+		return Redirect::to('income');
 	}
 
 

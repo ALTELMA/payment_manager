@@ -9,8 +9,13 @@ class ExpenseController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
-		echo "EXPENSE INDEX";
+		// Get all expenses
+		$expenses = Expense::all();
+		$totalValue = Expense::sum('value');
+
+		return View::make('expense.index')
+			->with('expenses', $expenses)
+			->with('totalValue', $totalValue);
 	}
 
 
@@ -21,7 +26,8 @@ class ExpenseController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		// Show form to add expense.
+		return View::make('expense.form');
 	}
 
 
@@ -32,7 +38,26 @@ class ExpenseController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// Validator Rules
+		$rules = array(
+			'title' => 'required',
+			'value' => 'required|numeric' 
+		);
+
+		$validator = Validator::make(Input::all(), $rules);
+
+		if($validator->fails()){
+			return Redirect::to('expense/create')->withErrors($validator);
+		}else{
+
+			$expense = new Expense;
+			$expense->title = Input::get('title');
+			$expense->description = Input::get('description');
+			$expense->value = Input::get('value');
+			$expense->save();
+
+			return Redirect::to('expense');
+		}
 	}
 
 
@@ -56,7 +81,10 @@ class ExpenseController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		// Get expense data.
+		$expense = Expense::find($id);
+
+		return View::make('expense.form')->with('expense', $expense);
 	}
 
 
@@ -68,7 +96,26 @@ class ExpenseController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		// Validator Rules
+		$rules = array(
+			'title' => 'required',
+			'value' => 'required|numeric' 
+		);
+
+		$validator = Validator::make(Input::all(), $rules);
+
+		if($validator->fails()){
+			return Redirect::to('expense/create')->withErrors($validator);
+		}else{
+
+			$expense = Expense::file($id);
+			$expense->title = Input::get('title');
+			$expense->description = Input::get('description');
+			$expense->value = Input::get('value');
+			$expense->save();
+
+			return Redirect::to('expense');
+		}
 	}
 
 
@@ -80,7 +127,11 @@ class ExpenseController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		// Delete expense data.
+		$expense = Expense::find($id);
+		$expense->delete();
+
+		return Redirect::to('expense');
 	}
 
 

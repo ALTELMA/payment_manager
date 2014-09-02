@@ -2,10 +2,10 @@
 @section('content')
 	<div class="container">
 		<h2>
-			<i class="fa fa-bank"></i>&nbsp;Income Add
+			<i class="fa fa-Money"></i>&nbsp;Expense Add
 			<div class="pull-right">
 				<a class="btn btn-success" href="javascript:void(0);" onClick="$('form').submit();"><i class="fa fa-save"></i>&nbsp;Save</a>
-				<a class="btn btn-default" href="{{ URL::to('income') }}"><i class="fa fa-arrow-circle-left"></i>&nbsp;Back</a>
+				<a class="btn btn-default" href="{{ URL::to('expense') }}"><i class="fa fa-arrow-circle-left"></i>&nbsp;Back</a>
 			</div>
 		</h2>
 		<hr>
@@ -15,10 +15,10 @@
 			</div>
 		@endif
 
-		@if(isset($income))
-		{{ Form::model($income, array('id' => 'form', 'route' => array('income.update', $income->id), 'method' => 'PUT')) }}
+		@if(isset($expense))
+		{{ Form::model($expense, array('id' => 'form', 'route' => array('expense.update', $expense->id), 'method' => 'PUT')) }}
 		@else
-		{{ Form::open(array('id' => 'form','class' => 'form', 'role' => 'form','url' => 'income')) }}
+		{{ Form::open(array('id' => 'form','class' => 'form', 'role' => 'form','url' => 'expense')) }}
 		@endif
 			<div class="form-group">
 				{{ Form::label('title', 'Title') }}

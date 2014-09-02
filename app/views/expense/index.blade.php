@@ -2,10 +2,10 @@
 @section('content')
 	<div class="container">
 		<h2>
-			<i class="fa fa-bank"></i>&nbsp;Income List 
-			<a class="btn btn-success pull-right" href="{{ URL::to('income/create') }}"><i class="fa fa-plus"></i>&nbsp;Add</a>
+			<i class="fa fa-money"></i>&nbsp;Expense List 
+			<a class="btn btn-success pull-right" href="{{ URL::to('expense/create') }}"><i class="fa fa-plus"></i>&nbsp;Add</a>
 		</h2>
-		@if($incomes->count())
+		@if($expenses->count())
 		<table class="table table-bordered">
 			<thead>
 				<tr>
@@ -15,14 +15,14 @@
 				</tr>
 			</thead>
 			<tbody>
-			@foreach ($incomes as $key => $value)
+			@foreach ($expenses as $key => $value)
 				<tr>
 					<td class="col-lg-8">{{ $value->title }}</td>
 					<td class="col-lg-3">{{ number_format($value->value) }}</td>
 					<td class="col-lg-1 text-center">
-						{{ Form::open(array('url' => 'income/' . $value->id)) }}
+						{{ Form::open(array('url' => 'expense/' . $value->id)) }}
 							{{ Form::hidden('_method', 'DELETE') }}
-							<a href="{{ URL::to('income/' . $value->id . '/edit') }}"><i class="fa fa-pencil-square-o fa-lg"></i></a>
+							<a href="{{ URL::to('expense/' . $value->id . '/edit') }}"><i class="fa fa-pencil-square-o fa-lg"></i></a>
 							<a href="javascript:void(0);" onCLick="$(this).parents().submit();"><i class="fa fa-trash-o fa-lg"></i></a>
 						{{ Form::close() }}
 					</td>
