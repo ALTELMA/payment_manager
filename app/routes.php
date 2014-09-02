@@ -41,11 +41,15 @@ Route::group(array('before'=>'auth'), function() {
 // Expense
 //=====================================================================
 
-//Route::resource('expense', 'ExpenseController');
-
 Route::group(array('before'=>'auth'), function() {   
     Route::resource('expense', 'ExpenseController');
 });
+
+//=====================================================================
+// Report
+//=====================================================================
+
+Route::get('report', array('uses' => 'ReportController@index'));
 
 //=====================================================================
 // Setting
