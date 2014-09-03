@@ -1,6 +1,8 @@
 @extends('layouts.full-width')
 @section('content')
 <div class="container">
+	
+	<!--
 	<div style="width: 50%">
 		<canvas id="canvas" height="450" width="600"></canvas>
 	</div>
@@ -34,6 +36,6 @@
 			});
 		}
 
-	</script>	
+	</script>-->
 </div>
 @stop
