@@ -34,8 +34,8 @@
 						<li {{ (Request::is('user') ? 'class=active' : '') }} ><a href="{{ URL::to('user') }}">Dashboard</a></li>
 						<li {{ (Request::is('income') ? 'class=active' : '') }} ><a href="{{ URL::to('income') }}">Income</a></li>
 						<li {{ (Request::is('expense') ? 'class=active' : '') }} ><a href="{{ URL::to('expense') }}">Expense</a></li>
-						<li {{ (Request::is('setting') ? 'class=active' : '') }} ><a href="{{ URL::to('setting') }}">Setting</a></li>
 						<li {{ (Request::is('report') ? 'class=active' : '') }} ><a href="{{ URL::to('report') }}">Report</a></li>
+						<li {{ (Request::is('setting') ? 'class=active' : '') }} ><a href="{{ URL::to('setting') }}">Setting</a></li>
 						<li><a href="{{ URL::to('user/logout') }}">Logout</a></li>
 					</ul>
 				</div>
