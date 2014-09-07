@@ -9,9 +9,8 @@
 		<canvas id="canvas" height="100"></canvas>
 	</div>
 	<script>
-		var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
 		var lineChartData = {
-			labels : ["January","February","March","April","May","June","July"],
+			labels : <?php print_r($report_label);?>,
 			datasets : [
 			{
 				label: "My First dataset",
@@ -21,7 +20,7 @@
 				pointStrokeColor : "#fff",
 				pointHighlightFill : "#fff",
 				pointHighlightStroke : "rgba(220,220,220,1)",
-				data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+				data : <?php print_r($report_income_data);?>
 			},
 			{
 				label: "My Second dataset",
@@ -31,10 +30,9 @@
 				pointStrokeColor : "#fff",
 				pointHighlightFill : "#fff",
 				pointHighlightStroke : "rgba(151,187,205,1)",
-				data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+				data : <?php print_r($report_expense_data);?>
 			}
 			]
-
 		}
 
 		window.onload = function(){
@@ -50,14 +48,16 @@
 		<thead>
 			<tr>
 				<th>Title</th>
-				<th>Value</th>
+				<th class="text-center">Income</th>
+				<th class="text-center">Expense</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach ($income_report as $key => $value)
 			<tr>
-				<td class="col-lg-8">{{ $value->month }}</td>
-				<td class="col-lg-3">{{ number_format($value->value) }}</td>
+				<td class="col-lg-6">{{ $value->month }}</td>
+				<td class="col-lg-3 text-center">{{ number_format($value->total_income) }}</td>
+				<td class="col-lg-3 text-center">{{ number_format($value->total_expense) }}</td>
 			</tr>
 			@endforeach
 		</tbody>

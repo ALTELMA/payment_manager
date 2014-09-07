@@ -22,11 +22,12 @@ class ExpenseTableSeeder extends Seeder
 			$string = $example_string[rand(0, sizeof($example_string) - 1)];
 
 			Expense::create(array(
-			'title'       => $string,
-			'description' => $string,
-			'value'       => rand(100, 50000),
-			'created_at'  => $dt->format( "Y-m-d H:i:s" ),
-			'updated_at'  => $dt->format( "Y-m-d H:i:s" ),
+				'user_id'     => 1,
+				'title'       => $string,
+				'description' => $string,
+				'value'       => rand(100, 50000),
+				'created_at'  => $dt->format( "Y-m-d H:i:s" ),
+				'updated_at'  => $dt->format( "Y-m-d H:i:s" ),
 			));
 		}
 		
