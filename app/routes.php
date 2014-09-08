@@ -16,6 +16,10 @@ Route::get('/', function(){
 	return View::make('users.login');
 });
 
+Route::group(array('prefix' => 'backend'), function(){
+	Route::get('/', 'Admin_DashboardController@getIndex');
+});
+
 Route::post('user/login', array('uses' => 'UserController@doLogin')); // Logoin
 Route::get('user/logout', array('uses' => 'UserController@doLogout')); // Logout
 
