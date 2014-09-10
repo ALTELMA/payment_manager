@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
 	<h2><i class="fa fa-bar-chart"></i>&nbsp;Report</h2>
-	@if($income_report->count())
+	@if($income_report)
 
 	<!-- graph -->
 	<div>
@@ -13,7 +13,7 @@
 			labels : <?php print_r($report_label);?>,
 			datasets : [
 			{
-				label: "My First dataset",
+				label: "Income",
 				fillColor : "rgba(220,220,220,0.2)",
 				strokeColor : "rgba(220,220,220,1)",
 				pointColor : "rgba(220,220,220,1)",
@@ -23,7 +23,7 @@
 				data : <?php print_r($report_income_data);?>
 			},
 			{
-				label: "My Second dataset",
+				label: "Expense",
 				fillColor : "rgba(151,187,205,0.2)",
 				strokeColor : "rgba(151,187,205,1)",
 				pointColor : "rgba(151,187,205,1)",
@@ -50,14 +50,16 @@
 				<th>Title</th>
 				<th class="text-center">Income</th>
 				<th class="text-center">Expense</th>
+				<th class="text-center">Balnce</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach ($income_report as $key => $value)
 			<tr>
-				<td class="col-lg-6">{{ $value->month }}</td>
+				<td class="col-lg-3">{{ $value->labelMonth }}</td>
 				<td class="col-lg-3 text-center">{{ number_format($value->total_income) }}</td>
 				<td class="col-lg-3 text-center">{{ number_format($value->total_expense) }}</td>
+				<td class="col-lg-3 text-center">{{ number_format($value->total_income - $value->total_expense) }}</td>
 			</tr>
 			@endforeach
 		</tbody>
