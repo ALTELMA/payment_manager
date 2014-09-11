@@ -10,8 +10,11 @@ class ExpenseController extends \BaseController {
 	public function index()
 	{
 		// Get all expenses
-		$expenses = Expense::all();
-		$totalValue = Expense::sum('value');
+		$expenses = Expense::select('id', DB::raw('SUM(value) AS total_value'),'created_at')
+			->where(DB::raw('WEEKOFYEAR(created_at)'), '=', DB::raw('WEEKOFYEAR(NOW())'))
+			->groupBY(DB::raw('DAY(created_at)'))
+			->get();
+		$totalValue = $expenses->sum('value');
 
 		return View::make('expense.index')
 			->with('expenses', $expenses)

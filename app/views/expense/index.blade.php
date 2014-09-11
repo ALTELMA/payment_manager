@@ -17,8 +17,8 @@
 			<tbody>
 			@foreach ($expenses as $key => $value)
 				<tr>
-					<td class="col-lg-8">{{ $value->title }}</td>
-					<td class="col-lg-3">{{ number_format($value->value) }}</td>
+					<td class="col-lg-8">{{ date('D', strtotime($value->created_at)) }}</td>
+					<td class="col-lg-3">{{ number_format($value->total_value) }}</td>
 					<td class="col-lg-1 text-center">
 						{{ Form::open(array('url' => 'expense/' . $value->id)) }}
 							{{ Form::hidden('_method', 'DELETE') }}

@@ -12,7 +12,7 @@ class IncomeTableSeeder extends Seeder
 		DB::table('Income')->delete();
 
 		$begin = new DateTime( '2014-01-01' );
-		$end = new DateTime( '2014-09-05' );
+		$end = new DateTime( '2014-12-31' );
 
 		$interval = DateInterval::createFromDateString('1 day');
 		$period = new DatePeriod($begin, $interval, $end);
