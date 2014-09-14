@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
 	<h2><i class="fa fa-bar-chart"></i>&nbsp;Report</h2>
-	@if($income_report)
+	@if($payment_report)
 
 	<!-- graph -->
 	<div>
@@ -54,7 +54,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach ($income_report as $key => $value)
+			@foreach ($payment_report as $key => $value)
 			<tr>
 				<td class="col-lg-3">{{ $value->labelMonth }}</td>
 				<td class="col-lg-3 text-center">{{ number_format($value->total_income) }}</td>

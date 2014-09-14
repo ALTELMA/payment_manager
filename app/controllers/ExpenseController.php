@@ -10,10 +10,17 @@ class ExpenseController extends \BaseController {
 	public function index()
 	{
 		// Get all expenses
+		/*
 		$expenses = Expense::select('id', DB::raw('SUM(value) AS total_value'),'created_at')
 			->where(DB::raw('WEEKOFYEAR(created_at)'), '=', DB::raw('WEEKOFYEAR(NOW())'))
 			->groupBY(DB::raw('DAY(created_at)'))
 			->get();
+		*/
+		
+		$expenses = Expense::where('created_at', '>=', DB::raw('CURDATE()'))
+			->orderBy('id', 'DESC')
+			->get();
+
 		$totalValue = $expenses->sum('value');
 
 		return View::make('expense.index')
@@ -43,8 +50,9 @@ class ExpenseController extends \BaseController {
 	{
 		// Validator Rules
 		$rules = array(
-			'title' => 'required',
-			'value' => 'required|numeric' 
+			'title'    => 'required',
+			'category' => 'required',
+			'value'    => 'required|numeric'
 		);
 
 		$validator = Validator::make(Input::all(), $rules);
@@ -53,10 +61,11 @@ class ExpenseController extends \BaseController {
 			return Redirect::to('expense/create')->withErrors($validator);
 		}else{
 
-			$expense = new Expense;
-			$expense->title = Input::get('title');
-			$expense->description = Input::get('description');
-			$expense->value = Input::get('value');
+			$expense             = new Expense;
+			$expense->title      = Input::get('title');
+			$expense->user_id     = Auth::user()->id;
+			$expense->category_id = Input::get('category');
+			$expense->value      = Input::get('value');
 			$expense->save();
 
 			return Redirect::to('expense');
@@ -101,8 +110,9 @@ class ExpenseController extends \BaseController {
 	{
 		// Validator Rules
 		$rules = array(
-			'title' => 'required',
-			'value' => 'required|numeric' 
+			'title'    => 'required',
+			'category' => 'required',
+			'value'    => 'required|numeric'
 		);
 
 		$validator = Validator::make(Input::all(), $rules);
@@ -111,10 +121,11 @@ class ExpenseController extends \BaseController {
 			return Redirect::to('expense/create')->withErrors($validator);
 		}else{
 
-			$expense = Expense::file($id);
-			$expense->title = Input::get('title');
-			$expense->description = Input::get('description');
-			$expense->value = Input::get('value');
+			$expense             = Expense::file($id);
+			$expense->title      = Input::get('title');
+			$expense->user_id     = Auth::user()->id;
+			$expense->category_id = Input::get('category');
+			$expense->value      = Input::get('value');
 			$expense->save();
 
 			return Redirect::to('expense');

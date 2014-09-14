@@ -24,7 +24,6 @@ class IncomeTableSeeder extends Seeder
 			Income::create(array(
 				'user_id'     => 1,
 				'title'       => $string,
-				'description' => $string,
 				'value'       => rand(100, 50000),
 				'created_at'  => $dt->format( "Y-m-d H:i:s" ),
 				'updated_at'  => $dt->format( "Y-m-d H:i:s" ),

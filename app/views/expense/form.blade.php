@@ -25,8 +25,8 @@
 				{{ Form::text('title', Input::old('title'), array('class' => 'form-control')) }}
 			</div>
 			<div class="form-group">
-				{{ Form::label('description', 'Description') }}
-				{{ Form::textarea('description', Input::old('description'), array('class' => 'form-control')) }}
+				{{ Form::label('category', 'Category') }}
+				{{ Form::select('category', array('' => '-- Select Category --') + Category::lists('name','id'), null, array('class' => 'form-control')); }}
 			</div>
 			<div class="form-group">
 				{{ Form::label('value', 'Value') }}

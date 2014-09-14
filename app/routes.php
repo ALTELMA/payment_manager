@@ -12,11 +12,13 @@
 */
 
 // Login
-Route::get('/', function(){
+Route::get('/', function()
+{
 	return View::make('users.login');
 });
 
-Route::group(array('prefix' => 'backend'), function(){
+Route::group(array('prefix' => 'backend'), function()
+{
 	Route::get('/', 'Admin_DashboardController@getIndex');
 });
 
@@ -29,7 +31,8 @@ Route::get('user/logout', array('uses' => 'UserController@doLogout')); // Logout
 
 Route::get('user/register', array('uses' => 'UserController@create'));
 
-Route::group(array('before'=>'auth'), function() {   
+Route::group(array('before'=>'auth'), function()
+{   
 	Route::resource('user', 'UserController');
 });
 
@@ -37,7 +40,8 @@ Route::group(array('before'=>'auth'), function() {
 // INCOME
 //=====================================================================
 //
-Route::group(array('before'=>'auth'), function() {   
+Route::group(array('before'=>'auth'), function()
+{   
 	Route::resource('income', 'IncomeController');
 });
 
@@ -45,7 +49,8 @@ Route::group(array('before'=>'auth'), function() {
 // Expense
 //=====================================================================
 
-Route::group(array('before'=>'auth'), function() {   
+Route::group(array('before'=>'auth'), function()
+{   
     Route::resource('expense', 'ExpenseController');
 });
 
@@ -58,7 +63,8 @@ Route::get('report', array('uses' => 'ReportController@index'));
 //=====================================================================
 // Setting
 //=====================================================================
-Route::group(array('before'=>'auth'), function() {   
+Route::group(array('before'=>'auth'), function()
+{   
 	Route::resource('setting', 'ExpenseController');
 });
 

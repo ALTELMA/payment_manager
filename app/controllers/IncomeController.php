@@ -10,14 +10,18 @@ class IncomeController extends \BaseController {
 	public function index()
 	{
 		//Get all income
-		//$incomes = Income::all();
+		/*
 		$incomes = Income::select('id', DB::raw('SUM(value) AS total_value'),'created_at')
 			->where(DB::raw('WEEKOFYEAR(created_at)'), '=', DB::raw('WEEKOFYEAR(NOW())'))
 			->groupBY(DB::raw('DAY(created_at)'))
+			->get();*/
+
+		$incomes = Income::where('created_at', '>=', DB::raw('CURDATE()'))
+			->orderBy('id', 'DESC')
 			->get();
 
 		// Get Total Value
-		$totalValue = $incomes->sum('total_value');
+		$totalValue = $incomes->sum('value');
 
 		// Load data send pass view
 		return View::make('income.index')
@@ -47,9 +51,9 @@ class IncomeController extends \BaseController {
 	{
 		//
 		$rules = array(
-			'title'       => 'required',
-			'description' => 'required',
-			'value'       => 'required|numeric'
+			'title'    => 'required',
+			'category' => 'required',
+			'value'    => 'required|numeric'
 		);
 
 		$validator = Validator::make(Input::all(), $rules);
@@ -59,9 +63,10 @@ class IncomeController extends \BaseController {
 				->withErrors($validator);
 		}else{
 			
-			$income = new Income;
+			$income              = new Income;
 			$income->title       = Input::get('title');
-			$income->description = Input::get('description');
+			$income->user_id     = Auth::user()->id;
+			$income->category_id = Input::get('category');
 			$income->value       = Input::get('value');
 			$income->save();
 
@@ -110,9 +115,9 @@ class IncomeController extends \BaseController {
 	{
 		//
 		$rules = array(
-			'title'       => 'required',
-			'description' => 'required',
-			'value'       => 'required|numeric'
+			'title'    => 'required',
+			'category' => 'required',
+			'value'    => 'required|numeric'
 		);
 
 		$validator = Validator::make(Input::all(), $rules);
@@ -124,7 +129,8 @@ class IncomeController extends \BaseController {
 			
 			$income = Income::find($id);
 			$income->title       = Input::get('title');
-			$income->description = Input::get('description');
+			$income->user_id     = Auth::user()->id;
+			$income->category_id = Input::get('category');
 			$income->value       = Input::get('value');
 			$income->save();
 

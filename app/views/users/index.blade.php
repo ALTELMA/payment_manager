@@ -1,6 +1,8 @@
 @extends('layouts.full-width')
 @section('content')
 	<div class="container">
+	<label>Name:</label>
+      <input type="text" ng-model="yourName" placeholder="Enter a name here">
 		<!-- Income List -->
 		<div class="row">
 			<div class="col-lg-12">
